@@ -1,7 +1,6 @@
 import express from 'express';
 import cors from 'cors';
 import { MongoClient, ServerApiVersion } from 'mongodb';
-import jwt from 'jsonwebtoken';
 import cookieParser from 'cookie-parser';
 import dotenv from 'dotenv';
 dotenv.config();
@@ -13,7 +12,11 @@ app.use(
   cors({
     origin: [
       "https://akashmedia.net",
-      "https://akash-media.vercel.app"
+      "https://www.akashmedia.net",
+      "http://akashmedia.net",
+      "http://www.akashmedia.net",
+      "https://akash-media.vercel.app",
+      "http://localhost:5173",
     ],
     credentials: true,
   })
@@ -50,8 +53,6 @@ async function run() {
       res.send(result);
     })
 
-    await client.db("admin").command({ ping: 1 });
-    console.log("Database connected!");
   } finally {
     // await client.close();
   }
@@ -61,8 +62,6 @@ run().catch(console.dir);
 app.get("/", (req, res) => {
   res.send("Welcome to Akash Media's Server!");
 });
-app.listen(port, () => {
-  console.log(`Server is running on http://localhost:${port}`);
-});
+app.listen(port);
 
 export default app;
