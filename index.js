@@ -37,6 +37,7 @@ async function run() {
   try {
     const database = client.db('akash-media');
     const channelCollection = database.collection('channels');
+    const bannerCollection = database.collection('banners');
     
     // Channels API
     app.get("/channels", async(req, res) => {
@@ -50,6 +51,12 @@ async function run() {
         };
       }
       const result = await channelCollection.find(filter).toArray();
+      res.send(result);
+    })
+
+    // Banners API
+    app.get("/banners", async(req, res) => {
+      const result = await bannerCollection.find().toArray();
       res.send(result);
     })
 
