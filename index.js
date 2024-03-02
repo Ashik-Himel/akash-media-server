@@ -12,7 +12,8 @@ const port = process.env.PORT || 5001;
 app.use(
   cors({
     origin: [
-      "https://www.akashmedia.net"
+      "https://akashmedia.net",
+      "https://akash-media.vercel.app"
     ],
     credentials: true,
   })
