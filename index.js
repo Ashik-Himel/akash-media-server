@@ -1,9 +1,8 @@
-import express from 'express';
-import cors from 'cors';
-import { MongoClient, ServerApiVersion } from 'mongodb';
-import cookieParser from 'cookie-parser';
-import dotenv from 'dotenv';
-dotenv.config();
+const express = require("express");
+const cors = require("cors");
+const { MongoClient, ServerApiVersion } = require("mongodb");
+const cookieParser = require("cookie-parser");
+require("dotenv").config();
 
 const app = express();
 const port = process.env.PORT || 5001;
@@ -71,4 +70,4 @@ app.get("/", (req, res) => {
 });
 app.listen(port);
 
-export default app;
+module.exports = app;
